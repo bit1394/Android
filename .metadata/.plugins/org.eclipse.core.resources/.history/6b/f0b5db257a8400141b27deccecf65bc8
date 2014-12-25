@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translate
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    android:fromXDelta="-150"
+    android:toXDelta="0"
+    android:fromYDelta="-150"
+    andrdoi:toYDelta = "0"
+    androdi:duration = "3000">
+    
+    
+
+</translate>

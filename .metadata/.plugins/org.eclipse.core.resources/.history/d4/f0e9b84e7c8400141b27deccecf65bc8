@@ -1,0 +1,51 @@
+package bitlabs.p021_simpleanim;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+
+public class MainActivity extends Activity {
+	 
+	final int ALPHA = 1;
+	final int ROTATE = 2;
+	final int TRANS = 3;
+	final int COMBO = 4;
+	final int SCALE = 5;
+	
+	TextView tv;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
+        
+        tv = (TextView) findViewById (R.id.tv);
+        
+        registerForContextMenu(tv);
+        
+    }
+
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+        
+    	
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}

@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="ru.s.p0191_simplecalc.MainActivity" >
+    <group android:id="@+id/grMenu">
+        <item android:id="@+id/clear" android:title="Clear"></item>
+        <item android:id="@+id/quit" android:title="Quit"></item>
+    </group>
+
+</menu>

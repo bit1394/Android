@@ -1,0 +1,17 @@
+package bitlabs.p021_twoact;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.Button;
+
+public class TwoAct extends Activity implements OnClickListener{
+	
+
+	protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.twoact);
+        
+        Button btnQuit = (Button) findViewById (R.id.btnQuit);
+
+}
+}

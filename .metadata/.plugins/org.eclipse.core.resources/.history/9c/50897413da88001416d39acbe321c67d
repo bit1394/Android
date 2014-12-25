@@ -1,0 +1,16 @@
+package bitlabs.p021_twoact;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class TwoAct extends Activity {
+	
+
+	protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.twoact);
+        
+        Button btnQuit = (Button) findViewById (R.id.btnQuit);
+
+}
+}
