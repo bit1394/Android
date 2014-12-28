@@ -1,12 +1,13 @@
 package bitlabs.p0261_intfil;
 
-import android.support.v7.app.ActionBarActivity;
+
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class Main extends ActionBarActivity {
+public class Main extends Activity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
