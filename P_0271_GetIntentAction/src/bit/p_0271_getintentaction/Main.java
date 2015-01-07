@@ -1,18 +1,27 @@
-package bitlabs.p0261_intfil;
-
+package bit.p_0271_getintentaction;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 
-public class Main extends Activity {
+public class Main extends Activity implements OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        Button btnTime = (Button) findViewById (R.id.btnTime);
+        Button btnDate = (Button) findViewById (R.id.btnDate);
+        
+        btnTime.setOnClickListener(this);
+        btnDate.setOnClickListener(this);
     }
 
 
@@ -29,9 +38,30 @@ public class Main extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.tvDate) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+	@Override
+	public void onClick(View arg0) {
+		Intent intCall;
+		
+		switch (arg0.getId()){
+		case R.id.btnTime:
+			intCall = new Intent ("IF.showtime");
+			startActivity(intCall);
+			break;
+		case R.id.btnDate:
+			intCall = new Intent ("IF.showdate");
+			startActivity(intCall);
+			break;
+		}
+		
+		
+		// TODO Auto-generated method stub
+		
+	}
 }
