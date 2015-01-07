@@ -22,6 +22,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="TimeShow">
+            <intent-filter android:label="T">
+                <action android:name="IntentFilter.showtime"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="DateShow">
+            <intent-filter android:label="D">
+                <action android:name="IntentFilter.showdate"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="AltDate">
+            <intent-filter android:label="AD">
+                <action android:name="IntentFilter.showdate"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
