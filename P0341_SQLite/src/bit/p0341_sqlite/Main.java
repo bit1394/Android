@@ -17,8 +17,8 @@ public class Main extends Activity implements OnClickListener{
 	
 	final String LOG_TAG = "myLogs";
 
-	Button btnAdd, btnRead, btnClear;
-	EditText etName, etEmail;
+	Button btnAdd, btnRead, btnClear, btnUpdate, btnDelete;
+	EditText etName, etEmail, etId;
 	
 	DBHelper dbHelper;
 	
@@ -30,13 +30,18 @@ public class Main extends Activity implements OnClickListener{
 		btnAdd = (Button) findViewById (R.id.btnAdd);
 		btnRead = (Button)findViewById (R.id.btnRead);
 		btnClear = (Button) findViewById(R.id.btnClear);
+		btnUpdate = (Button)findViewById(R.id.btnUpdate);
+		btnDelete = (Button)findViewById (R.id.btnDelete);
 		
 		etName = (EditText) findViewById (R.id.etName);
 		etEmail = (EditText) findViewById(R.id.etEmail);
+		etId = (EditText) findViewById (R.id.etId);
 		
 		btnAdd.setOnClickListener (this);
 		btnRead.setOnClickListener (this);
 		btnClear.setOnClickListener (this);
+		btnUpdate.setOnClickListener (this);
+		btnDelete.setOnClickListener (this);
 		
 		dbHelper = new DBHelper(this);	
 	}
@@ -49,6 +54,7 @@ public class Main extends Activity implements OnClickListener{
 		//получаем данные из EditText
 		String name = etName.getText().toString();
 		String email = etEmail.getText().toString();
+		String id = etId.getText().toString();
 		
 		//подключаемся к БД
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -92,6 +98,31 @@ public class Main extends Activity implements OnClickListener{
 			//удалим все записи, delete выдает кол-во удаленных записей
 			int clearCount = db.delete("mytable", null, null);
 			Log.d(LOG_TAG, "deleted rows count = " + clearCount);
+			break;
+		
+		case R.id.btnUpdate:
+			if (id.equalsIgnoreCase("")){
+				break;
+			}
+			Log.d(LOG_TAG,"---Update mytable:---");
+			//подготовим значения для обновления
+			cv.put("name", name);
+			cv.put("email", email);
+			
+			//обновим по id
+			int updCount = db.update("mytable", cv, "id = ?", new String [] {id});
+			Log.d(LOG_TAG, "updated rows count = " + updCount);
+			break;
+			
+		case R.id.btnDelete:
+			if (id.equalsIgnoreCase("")){
+				break;
+			}
+			Log.d(LOG_TAG, "---Delete from mytable:---");
+			
+			//удалим данные по id
+			int delCount = db.delete("mytable", "id = " + id, null);
+			Log.d(LOG_TAG, "deleted rows count = " + delCount);
 			break;
 		}
 		//закроем подключение к БД
