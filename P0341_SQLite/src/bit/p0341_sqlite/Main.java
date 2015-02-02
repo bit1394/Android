@@ -101,16 +101,17 @@ public class Main extends Activity implements OnClickListener{
 	class DBHelper extends SQLiteOpenHelper {
 		
 		public DBHelper (Context context){
-			super(context, "mytable", null, 1);
+			//вызываем конструктор суперкласса - создание БД с именем myDBB
+			super(context, "myDBB", null, 1);
 		}
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			Log.d(LOG_TAG, "---onCreate database:---");
 			//создаем таблицу с полями
-			db.execSQL("create table mytable( "
-					+ "id integer primary key autoincrement, "
-					+ "name text"
+			db.execSQL("create table mytable ("
+					+ "id integer primary key autoincrement,"
+					+ "name text,"
 					+ "email text" + ");");
 		}
 
