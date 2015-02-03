@@ -1,0 +1,123 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="bit.p0361_querysort.Main" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|center"
+        android:text="Справочник стран"
+        android:textSize="23sp" />
+
+    <Button
+        android:id="@+id/btnAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="20dp"
+        android:text="Все записи" />
+
+    <Button
+        android:id="@+id/btnFunc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnAll"
+        android:layout_below="@+id/btnAll"
+        android:text="Функции" />
+
+    <Button
+        android:id="@+id/btnPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnFunc"
+        android:layout_below="@+id/btnFunc"
+        android:text="Население >" />
+
+    <Button
+        android:id="@+id/btnGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnPeople"
+        android:layout_below="@+id/btnPeople"
+        android:text="Население по региону" />
+
+    <Button
+        android:id="@+id/btnHaving"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnGroup"
+        android:layout_below="@+id/btnGroup"
+        android:text="Население по региону >" />
+
+    <Button
+        android:id="@+id/btnSort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnHaving"
+        android:layout_below="@+id/btnHaving"
+        android:text="Сортировка" />
+
+    <EditText
+        android:id="@+id/etFunc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnPeople"
+        android:layout_toRightOf="@+id/btnFunc"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/etPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnPeople"
+        android:layout_toRightOf="@+id/btnPeople"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/etRegionPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnHaving"
+        android:layout_toRightOf="@+id/btnHaving"
+        android:ems="10" />
+
+    <RadioGroup
+        android:id="@+id/rgSort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/etPeople"
+        android:layout_alignTop="@+id/btnSort"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/rName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Наименование" />
+
+        <RadioButton
+            android:id="@+id/rPeople"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Население" />
+
+        <RadioButton
+            android:id="@+id/rRegion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Регион" />
+    </RadioGroup>
+
+</RelativeLayout>
