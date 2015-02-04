@@ -66,15 +66,35 @@ public class Main extends Activity implements OnClickListener{
 		onClick (btnAll);
 		
 	}
-	public void onCli
-		
-		
-	}
+	
 
 	
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		//подключаемс€ к Ѕƒ
+		db = dbHelper.getWritableDatabase();
+		
+		//забираем данные с полей ввода
+		String sFunc = etFunc.getText().toString();
+		String sPeople = etPeople.getText().toString();
+		String sRegionPeople = etRegionPeople.getText().toString();
+		
+		//объ€вл€ем и инициализируем NULL переменные дл€ QUERY
+		/*query (String table, String[] columns, String selection, 
+		 * String[] selectionArgs, String groupBy, String having, String orderBy) 
+		 */
+		
+		String [] columns = null;
+		String selection = null;
+		String [] selectionArgs = null;
+		String groupBy = null;
+		String having = null;
+		String orderBy = null;
+		
+		//снова объ€вим курсор
+		Cursor c= null;
+		
+		//определим нажатую кнопку
 		
 	}
 }
