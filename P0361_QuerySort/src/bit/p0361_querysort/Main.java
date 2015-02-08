@@ -2,8 +2,10 @@ package bit.p0361_querysort;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +25,7 @@ public class Main extends Activity implements OnClickListener{
 	RadioGroup rgSort;
 	EditText etFunc, etPeople, etRegionPeople;
 	
-	DBHepler dbHelper;
+	DBHelper dbHelper;
 	SQLiteDatabase db;
 
 	@Override
@@ -31,12 +33,23 @@ public class Main extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		
-		findViewById(R.id.btnAll).setOnClickListener(this);
-		findViewById(R.id.btnFunc).setOnClickListener(this);
-		findViewById(R.id.btnPeople).setOnClickListener(this);
-		findViewById(R.id.btnGroup).setOnClickListener(this);
-		findViewById(R.id.btnHaving).setOnClickListener(this);
-		findViewById(R.id.btnSort).setOnClickListener(this);
+		btnAll = (Button) findViewById(R.id.btnAll);
+		btnAll.setOnClickListener(this);
+	
+		btnFunc = (Button)findViewById(R.id.btnFunc);
+		btnFunc.setOnClickListener(this);
+		
+		btnPeople = (Button)findViewById(R.id.btnPeople);
+		btnPeople.setOnClickListener(this);
+		
+		btnGroup = (Button)findViewById(R.id.btnGroup);
+		btnGroup.setOnClickListener(this);
+		
+		btnHaving = (Button)findViewById(R.id.btnHaving);
+		btnHaving.setOnClickListener(this);
+		
+		btnSort = (Button)findViewById(R.id.btnSort);
+		btnSort.setOnClickListener(this);
 		
 		rgSort = (RadioGroup) findViewById (R.id.rgSort);
 		
@@ -46,7 +59,7 @@ public class Main extends Activity implements OnClickListener{
 		
 		dbHelper = new DBHelper(this);
 		//подключение к ДБ
-		db = dbHelper.getWritableDatabaase();
+		db = dbHelper.getWritableDatabase();
 		//проверим существование записей
 		
 		Cursor c = db.query("mytable", null, null, null, null, null, null);
@@ -95,6 +108,115 @@ public class Main extends Activity implements OnClickListener{
 		Cursor c= null;
 		
 		//определим нажатую кнопку
+		switch (v.getId()){
 		
+		//все записи
+		case R.id.btnAll:
+			Log.d(LOG_TAG,"---Все записи---");
+			c = db.query("mytable",null,null,null,null,null,null);
+			break;
+		
+		//функции
+		case R.id.btnFunc:
+			Log.d(LOG_TAG,"---Функция " + sFunc + "---");
+			columns = new String[] {sFunc};
+			c = db.query("mytable", columns, null, null, null, null, null);
+			break;
+			
+		//Население больше, чем
+		case R.id.btnPeople:
+			Log.d(LOG_TAG, "---Население больше " + sPeople + "---");
+			selection = "people > ?";
+			selectionArgs = new String [] {sPeople};
+			c = db.query("mytable", null, selection, selectionArgs, null, null, null);
+			break;
+			
+		//Население по региону
+		case R.id.btnGroup:
+			Log.d(LOG_TAG,"---Население по региону---");
+			columns = new String [] {"region", "sum (people) as people"};
+			groupBy = "region";
+			c = db.query("mytable", columns, null, null, groupBy, null, null);
+			break;
+			
+		//Население по региону больше, чем
+		case R.id.btnHaving:
+			Log.d(LOG_TAG, "---Регионы с населением больше " + sRegionPeople + "---");
+			columns = new String [] {"region", "sum (people) as people"};
+			groupBy = "region";
+			having = "sum (people) >" + sRegionPeople;
+			c = db.query("mytable", columns, null, null, groupBy, having, null);
+			break;
+			
+		//Сортировка
+		case R.id.btnSort:
+			//Сортировка по
+			switch (rgSort.getCheckedRadioButtonId()){
+			
+				//Наименование
+				case R.id.rName:
+					Log.d(LOG_TAG, "---Сортировка по наименованию---");
+					orderBy = "name";
+					break;
+					
+				//Население
+				case R.id.rPeople:
+					Log.d(LOG_TAG, "---Сортировка по населению---");
+					orderBy = "people";
+					break;
+					
+				//Регион
+				case R.id.rRegion:
+					Log.d(LOG_TAG, "---Сортировка по региону---");
+					orderBy = "region";
+					break;
+			}
+		c = db.query("mytable", null, null, null, null, null, orderBy);
+		break;
+		}
+		
+		if (c != null){
+			if (c.moveToFirst()){
+				String str;
+				do {
+					str = "";
+					for (String cn:c.getColumnNames()){
+						str = str.concat(cn + "=" + c.getString(c.getColumnIndex(cn)) + ";");
+					}
+				Log.d(LOG_TAG, str);
+			} while (c.moveToNext());
+			}
+			c.close();
+			}
+			else
+				Log.d(LOG_TAG, "Cursor is null");
+			
+			dbHelper.close();
+		}
+		
+		
+		class DBHelper extends SQLiteOpenHelper {
+			public DBHelper (Context context){
+				//конструктор суперкласса
+			super(context, "myDB", null, 1);
+			}
+
+			@Override
+			public void onCreate (SQLiteDatabase db) {
+			Log.d(LOG_TAG, "---Creating  database---");	
+			//создание таблицы MYTABLE с полями ID, NAMR, PEOPLE, REGION 
+			db.execSQL("create table mytable (" 
+					+ "id integer primary key autoincrement,"
+					+ "name text,"
+					+ "people integer,"
+					+ "region text" + ");");
+			}
+			
+			@Override
+			public void onUpgrade (SQLiteDatabase db, int oldVersion,
+					int newVersion) {				
+			}				
+		
+		}
+				
 	}
-}
