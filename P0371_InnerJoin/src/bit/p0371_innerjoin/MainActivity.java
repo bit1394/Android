@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
 		Log.d(LOG_TAG, "--- ---");
 		
 		//выведем результат объединения таблиц query
-		Log.d(LOG_TAG, "---INNER JOIN with quey---");
+		Log.d(LOG_TAG, "---INNER JOIN with query---");
 		String table = "people as PL inner join position as PS on PL.posid = PS.id";
 		String columns [] = {"PL.name as  Name", "PS.name as Position", "salary as Salary"};
 		String selection = "salary < ?";
