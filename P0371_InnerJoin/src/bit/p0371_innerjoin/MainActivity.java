@@ -13,13 +13,13 @@ public class MainActivity extends Activity {
 	final String LOG_TAG = "myLogs";
 	
 	//данные для таблиц должностей
-	int [] position_id = {1,2,3,4};
-	String [] position_name = {"Директор", "Программист",  "Бухгалтер", "Охранник"};
-	int [] position_salary = {15000,13000,10000,8000};
+	int[] position_id = {1,2,3,4};
+	String[] position_name = {"Директор", "Программист",  "Бухгалтер", "Охранник"};
+	int[] position_salary = {15000, 13000, 10000, 8000};
 	
 	//данные для таблицы людей
-	String [] people_name = {"Иван","Марья","Петр","Антон","Даша","Борис","Костя","Игорь"};
-	int [] people_posid = {2,3,2,2,3,1,2,4};
+	String[] people_name = {"Иван","Марья","Петр","Антон","Даша","Борис","Костя","Игорь"};
+	int[] people_posid = {2,3,2,2,3,1,2,4};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class MainActivity extends Activity {
 		//выведем результат объединения таблиц query
 		Log.d(LOG_TAG, "---INNER JOIN with quey---");
 		String table = "people as PL inner join position as PS on PL.posid = PS.id";
-		String columns [] = {"PL.name as  Name","PS.name as Position", "salary as Salary"};
+		String columns [] = {"PL.name as  Name", "PS.name as Position", "salary as Salary"};
 		String selection = "salary < ?";
 		String [] selectionArgs = {"12000"};
 		c = db.query(table, columns, selection, selectionArgs,null,null,null);
@@ -81,8 +81,8 @@ public class MainActivity extends Activity {
 				String str;
 				do {
 					str = "";
-					for (String cn:c.getColumnNames()){
-						str = str.concat(cn + "=" + c.getString(c.getColumnIndex(cn)) + ";");
+					for (String cn : c.getColumnNames()){
+						str = str.concat(cn + " = " + c.getString(c.getColumnIndex(cn)) + ";");
 					}
 					Log.d(LOG_TAG, str);
 				} while (c.moveToNext());
