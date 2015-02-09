@@ -95,7 +95,7 @@ public class MainActivity extends Activity {
 	//класс для рабоы с БД
 	class DBHelper extends SQLiteOpenHelper {
 		public DBHelper (Context context){
-			super (context, "myDB", null,1);
+			super (context, "DB", null,1);
 		}
 	public void onCreate (SQLiteDatabase db){
 		Log.d(LOG_TAG, "---Creating database---");
@@ -121,14 +121,15 @@ public class MainActivity extends Activity {
 		db.execSQL("create table people ("
 				+ "id integer primary key autoincrement,"
 				+ "name text,"
-				+ "posid integer" + ");");
+				+ "posid integer" 
+				+ ");");
 		
 		//заполняем таблицу людей
 		for (int i = 0; i < people_name.length; i++){
 			cv.clear();
 			cv.put("name", people_name [i]);
 			cv.put("posid", people_posid [i]);
-			db.insert("position", null, cv);
+			db.insert("people", null, cv);
 		}
 	}
 	@Override
