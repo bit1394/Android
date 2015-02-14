@@ -3,8 +3,6 @@ package ru.startandroid.p0161_javview;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -16,61 +14,39 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		LinearLayout llout = new LinearLayout (this);
-		llout.setOrientation(LinearLayout.VERTICAL);
+		LinearLayout ll = new LinearLayout (this);
+		ll.setOrientation(LinearLayout.VERTICAL);
 		
-		LayoutParams lloutParam = new LayoutParams (LayoutParams.MATCH_PARENT, 
+		LayoutParams paramMatch = new LayoutParams (LayoutParams.MATCH_PARENT, 
 				LayoutParams.MATCH_PARENT);
-		setContentView(llout, lloutParam);
+		setContentView(ll, paramMatch);
 		
-		LayoutParams lpView = new LayoutParams (LayoutParams.WRAP_CONTENT, 
+		LayoutParams paramWrap = new LayoutParams (LayoutParams.WRAP_CONTENT, 
 				LayoutParams.WRAP_CONTENT);
 		
 		TextView tv = new TextView (this);
 		tv.setText("TV");
-		tv.setLayoutParams(lpView);
-		llout.addView(tv);
+		tv.setLayoutParams(paramWrap);
+		ll.addView(tv);
 		
 		Button btn = new Button (this);
 		btn.setText("Baton");
-		llout.addView(btn, lpView);
+		ll.addView(btn, paramMatch);
 		
-		LinearLayout.LayoutParams leftMarginParams = new LinearLayout.LayoutParams 
+		LinearLayout.LayoutParams paramLeftMarg = new LinearLayout.LayoutParams 
 				(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		
-		leftMarginParams.leftMargin = 50;
+		paramLeftMarg.leftMargin = 50;
 		Button btn1 = new Button (this);
 		btn1.setText("Margin 50");
-		llout.addView(btn1, leftMarginParams);
+		ll.addView(btn1, paramLeftMarg);
 		
-		LinearLayout.LayoutParams rGravityParams = new LinearLayout.LayoutParams 
+		LinearLayout.LayoutParams paramRGrav = new LinearLayout.LayoutParams 
 				(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		
-		rGravityParams.gravity = Gravity.RIGHT;
+		paramRGrav.gravity = Gravity.RIGHT;
 		Button btn2 = new Button (this);
 		btn2.setText("Right grav");
-		llout.addView(btn2, rGravityParams);
-		
-				
-		
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		ll.addView(btn2, paramRGrav);
 		}
-		return super.onOptionsItemSelected(item);
-	}
 }
