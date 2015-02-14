@@ -24,6 +24,12 @@ public class MainActivity extends Activity {
 		LayoutParams paramWrap = new LayoutParams (LayoutParams.WRAP_CONTENT, 
 				LayoutParams.WRAP_CONTENT);
 		
+		LinearLayout.LayoutParams paramLeftMarg = new LinearLayout.LayoutParams 
+				(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		
+		LinearLayout.LayoutParams paramRGrav = new LinearLayout.LayoutParams 
+				(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		
 		TextView tv = new TextView (this);
 		tv.setText("TV");
 		tv.setLayoutParams(paramWrap);
@@ -31,18 +37,12 @@ public class MainActivity extends Activity {
 		
 		Button btn = new Button (this);
 		btn.setText("Baton");
-		ll.addView(btn, paramMatch);
-		
-		LinearLayout.LayoutParams paramLeftMarg = new LinearLayout.LayoutParams 
-				(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-		
+		ll.addView(btn, paramLeftMarg);
+				
 		paramLeftMarg.leftMargin = 50;
 		Button btn1 = new Button (this);
 		btn1.setText("Margin 50");
-		ll.addView(btn1, paramLeftMarg);
-		
-		LinearLayout.LayoutParams paramRGrav = new LinearLayout.LayoutParams 
-				(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		ll.addView(btn1, paramLeftMarg);	
 		
 		paramRGrav.gravity = Gravity.RIGHT;
 		Button btn2 = new Button (this);
