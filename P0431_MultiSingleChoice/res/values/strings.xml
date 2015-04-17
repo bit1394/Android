@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">P0431_MultiSingleChoice</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string-array name = "names">
+        <item> Ivan</item>
+        <item> Boris</item>
+        <item> Peter</item>
+        <item>Sandra</item>
+        <item>Zara</item>
+    </string-array>
+
+</resources>
