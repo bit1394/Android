@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">P0441_EventList</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string-array name = "names">
+        <item >Ivan</item>
+        <item >Peter</item>
+        <item>Eva</item>
+        <item>Adam</item>
+        <item>Vogan</item>
+        <item>John</item>
+        <item>Adolf</item>
+        <item>Tron</item>
+        <item>Clu</item>
+        <item>Jane</item>
+    </string-array>
+
+</resources>
