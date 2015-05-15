@@ -4,5 +4,13 @@
     <string name="app_name">G001</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="sub1">Информатика</string>
+    <string-array name="Cost">
+        <item >100</item>
+        <item >200</item>
+        <item >300</item>
+        <item >400</item>
+    </string-array>
+    <string name="Cost1">100</string>
 
 </resources>
