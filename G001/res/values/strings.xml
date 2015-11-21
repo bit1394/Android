@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">G001</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="Cost1">100</string><string name="Cost2">200</string><string name="Cost3">300</string><string name="Cost4">400</string><string name="sub1">Информатика</string>
+    
+    <string name="sub2">Математика</string>
+    <string name="sub3">Физика</string>
+    
+    
+    
+    <string name="Stage1">Первый раунд</string>
+
+</resources>
